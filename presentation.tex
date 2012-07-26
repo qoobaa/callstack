@@ -1,0 +1,119 @@
+\documentclass[16pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[polish]{babel}
+\usepackage{url}
+\usepackage{verbatim}
+\input{pygments}
+
+\usetheme{Pittsburgh}
+\usenavigationsymbolstemplate{} % turn off navigation icons
+\setbeamercovered{transparent}
+
+\author{Silesian Ruby Users Group\\\footnotesize{Jakub Kuźma}}
+\title{Where is my Call Stack?!?}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Synchronous Program}
+  \begin{footnotesize}
+    \input{simple-sync}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Synchronous Program - output}
+  \begin{scriptsize}
+    \verbatiminput{simple-sync.txt}
+  \end{scriptsize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Asynchronous Program}
+  \begin{footnotesize}
+    \input{simple-async}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Asynchronous Program - output}
+  \begin{scriptsize}
+    \verbatiminput{simple-async.txt}
+  \end{scriptsize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rails Call Stack}
+  \begin{center}
+    DEMO
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Synchronous Try..Catch}
+  \begin{footnotesize}
+    \input{trycatch-sync}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Synchronous Try..Catch - output}
+  \begin{scriptsize}
+    \verbatiminput{trycatch-sync.txt}
+  \end{scriptsize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Asynchronous Try..Catch}
+  \begin{footnotesize}
+    \input{trycatch-async}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple Asynchronous Try..Catch - output}
+  \begin{scriptsize}
+    \verbatiminput{trycatch-async.txt}
+  \end{scriptsize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{fs.openSync}
+  \begin{footnotesize}
+    \input{fs-opensync}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{fs.openSync - output}
+  \begin{scriptsize}
+    \verbatiminput{fs-opensync.txt}
+  \end{scriptsize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{fs.open}
+  \begin{footnotesize}
+    \input{fs-open}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{fs.open - output}
+  \begin{scriptsize}
+    \verbatiminput{fs-open.txt}
+  \end{scriptsize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Questions?}
+  \begin{center}
+    CAN HAS QUESTION?
+  \end{center}
+\end{frame}
+
+\end{document}

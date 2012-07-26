@@ -1,0 +1,16 @@
+*.toc
+*.aux
+*.log
+*.lof
+*.bib
+*.bbl
+*.blg
+*.out
+*.snm
+*.vrb
+*.nav
+*.txt
+*.eps
+*.pdf
+*.tex
+!presentation.tex
