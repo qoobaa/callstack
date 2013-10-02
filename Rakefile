@@ -7,7 +7,7 @@ DIA_SRC  = FileList["*.dia"]
 JS_SRC = FileList["**/*.js"]
 SVG_IMG  = FileList["**/*.svg"]
 
-CLEAN.include(%w(*.toc *.aux *.log *.lof *.bib *.bbl *.blg *.out *.snm *.vrb *.nav), JS_SRC.ext("tex"), JS_SRC.ext("txt"), DIA_SRC.ext("eps"), DIA_SRC.ext("pdf"))
+CLEAN.include(%w[*.toc *.aux *.log *.lof *.bib *.bbl *.blg *.out *.snm *.vrb *.nav pygments.tex], JS_SRC.ext("tex"), JS_SRC.ext("txt"), DIA_SRC.ext("eps"), DIA_SRC.ext("pdf"))
 
 CLOBBER.include(%w(pdf dvi ps).collect { |e| SRC.ext(e) })
 
@@ -38,9 +38,16 @@ end
 file SRC.ext("pdf") => [SRC] + JS_SRC.ext("tex") + JS_SRC.ext("txt") + DIA_SRC.ext("pdf")
 
 desc "Compile PDF"
-task :pdf => SRC.ext("pdf")
+task :pdf => [:pygments, SRC.ext("pdf")]
 
 desc "Show compiled PDF in Evince."
 task :evince => :pdf do
   sh "evince #{SRC.ext("pdf")}"
+end
+
+desc "Generate pygments.tex"
+task :pygments do
+  sh "echo '' | pygmentize -f latex -O full -o pygments.tex -l javascript"
+  src = open("pygments.tex") { |file| file.read[/^\\makeatletter.*^\\makeatother/m] }
+  open("pygments.tex", "w+") { |file| file.write(src) }
 end
