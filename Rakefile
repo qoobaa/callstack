@@ -24,7 +24,7 @@ rule ".pdf" => ".eps" do |t|
 end
 
 rule ".tex" => ".js" do |t|
-  sh "pygmentize -f latex -o #{t.name} #{t.source}"
+  sh "pygmentize -f latex -O linenos=true -o #{t.name} #{t.source}"
 end
 
 rule ".txt" => ".js" do |t|
